@@ -6,6 +6,7 @@
 package lab7_joseluispereria;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -60,10 +61,11 @@ public class princi extends javax.swing.JFrame {
         jl_piezas = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jt_ensa = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
 
         Eliminar.setText("Eliminar");
         Eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -165,12 +167,7 @@ public class princi extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Ensambalar piezas");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
+        jLabel8.setText("Click derecho para eliminar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -202,18 +199,19 @@ public class princi extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addGap(76, 76, 76))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +222,9 @@ public class princi extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,9 +245,7 @@ public class princi extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(118, 118, 118)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton1)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
@@ -255,7 +253,7 @@ public class princi extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Creacion de partes", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jt_ensa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -263,7 +261,14 @@ public class princi extends javax.swing.JFrame {
                 "Carro", "Pieza", "Tiempo"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jt_ensa);
+
+        jButton3.setText("Comenzar");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -271,15 +276,21 @@ public class princi extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1056, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(479, 479, 479)
+                .addComponent(jButton3)
+                .addContainerGap(510, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Ensamblaje", jPanel2);
@@ -337,29 +348,22 @@ public class princi extends javax.swing.JFrame {
             double tiempo;
             nombre = ((piezas) modeloLISTA.get(jl_piezas.getSelectedIndex())).getNombre();
             material = ((piezas) modeloLISTA.get(jl_piezas.getSelectedIndex())).getMaterial();
-            tiempo = ((piezas) modeloLISTA.get(jl_piezas.getSelectedIndex())).getTiempo();
-            int centinela = -1;
+            tiempo = ((piezas) modeloLISTA.get(jl_piezas.getSelectedIndex())).getTiempo();      
             for (int i = 0; i < raiz.getChildCount(); i++) {
                 DefaultMutableTreeNode p = new DefaultMutableTreeNode(
                         new piezas(nombre,
-                                material, tiempo));
+                                material, tiempo));               
                 ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
-                centinela = 1;
-                if (raiz.getChildAt(i).isLeaf() ) {
-                    System.out.println("nepe");
-                }
+                aux++;
+                o.add(raiz.getChildAt(i));
             }
-
+            
+            System.out.println(o);
             modeloARBOL.reload();
         } else {
             JOptionPane.showMessageDialog(this, "No hay piezas seleccionadas");
         }
     }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jButton2MouseClicked
 
     private void jt_arbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_arbolMouseClicked
         // TODO add your handling code here:
@@ -385,6 +389,12 @@ public class princi extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_EliminarActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+
+        hilos h=new hilos(this.jt_ensa,carro);
+        h.correr();
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -426,7 +436,7 @@ public class princi extends javax.swing.JFrame {
     private javax.swing.JButton bt_carro;
     private javax.swing.JButton bt_pieza;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -434,6 +444,7 @@ public class princi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -442,9 +453,9 @@ public class princi extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JList<String> jl_piezas;
     private javax.swing.JTree jt_arbol;
+    private javax.swing.JTable jt_ensa;
     private javax.swing.JPopupMenu popup_borrar;
     private javax.swing.JTextField tf_material_pieza;
     private javax.swing.JTextField tf_nombre_carro;
@@ -455,5 +466,8 @@ DefaultMutableTreeNode nodo_carro;
     DefaultMutableTreeNode nodo_pieza;
     DefaultListModel model;
     piezas pieza_selccionada;
+    ArrayList o = new ArrayList();
+    int aux=0;
+    piezas carro;
 
 }
